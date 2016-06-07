@@ -15,17 +15,27 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    let viewModel = ViewModel()
     var dataSource = [Section]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerCells(tableView)
+        registerReusableViews(tableView)
         dataSource = setupDataSource()
     }
     
     func reloadView() {
         dataSource = setupDataSource()
         tableView.reloadData()
+    }
+    
+    func createTestVC() {
+        //Here the storyboard is alive as long as this function is being executed.
+        let storyboard = UIStoryboard.instantiateStoryboardOfType(.Main)
+        let testVC = storyboard?.instantiateViewController(TestViewController)
+        
+        //Here, the scope of the storyboard instance is not present within this function. It's already deallocated.
+        let darshansTestVC: TestViewController? = UIStoryboard.StoryboardType.Main.instantiateViewController()
     }
 }
 
@@ -45,17 +55,8 @@ extension TableViewHandling: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+//MARK: - UI
 extension UILogic {
-    
-    private func registerCells(tableView: UITableView) {
-        tableView.registerReusableCell(ImagesCell)
-    }
-    
-    private func setupDataSource() -> [Section] {
-        var sections = [Section]()
-        sections.append(Section(header: .Plain, cells: [.Plain], footer: .Plain))
-        return sections
-    }
     
     struct Section {
         var header: HeaderType
@@ -63,9 +64,48 @@ extension UILogic {
         var footer: FooterType
     }
     
+    private func registerReusableViews(tableView: UITableView) {
+        tableView.registerReusableCell(ImagesCell)
+    }
+    
+    private func setupDataSource() -> [Section] {
+        var sections = [Section]()
+        
+        //Section 0
+        var sectionZeroCells = [CellType]()
+        if viewModel.isSocialConnectionPresent()
+        {
+            sectionZeroCells.append(.Social)
+        }
+        if viewModel.isDescriptionPresent()
+        {
+            sectionZeroCells.append(.Description)
+        }
+        sections.append(Section(header: .NoHeader, cells: sectionZeroCells, footer: .Button))
+        
+        //Section 1
+        
+        if viewModel.isMusicPresent()
+        {
+            sections.append(Section(header: .Plain, cells: [.Music], footer: .Button))
+        }
+        //.
+        //.
+        //.
+        //Section x
+        if viewModel.isEquipmentPresent()
+        {
+            sections.append(Section(header: .Plain, cells: [.Equipment], footer: .Button))
+        }
+        
+        return sections
+    }
+    
+    
     enum HeaderType {
         case Plain
         case Button
+        case NoHeader
         
         func getheaderView() -> UITableViewHeaderFooterView {
             var headerView: UITableViewHeaderFooterView
@@ -74,25 +114,38 @@ extension UILogic {
                 headerView = UITableViewHeaderFooterView()
             case Button:
                 headerView = UITableViewHeaderFooterView()
+            case NoHeader:
+                headerView = UITableViewHeaderFooterView()
             }
             return headerView
         }
+        
     }
     
     enum CellType {
-        case Plain
-        case Button
+        case Social
+        case Equipment
+        case Description
+        case Music
+        case Review
         
         func getCell(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
-            var headerView: UITableViewCell
+            var cellType: UITableViewCell
             switch self {
-            case Plain:
+            case Social:
+//                let cell = tableView.dequeueReusableCellWithIdentifier(<#T##identifier: String##String#>, forIndexPath: <#T##NSIndexPath#>) as? ImagesCell
                 let cell: ImagesCell = tableView.dequeueReusableCell(indexPath: indexPath)
-                headerView = cell
-            case Button:
-                headerView = UITableViewCell()
+                cellType = cell
+            case Equipment:
+                cellType = UITableViewCell()
+            case Description:
+                cellType = UITableViewCell()
+            case Music:
+                cellType = UITableViewCell()
+            case Review:
+                cellType = UITableViewCell()
             }
-            return headerView
+            return cellType
         }
     }
     

@@ -15,6 +15,9 @@
 		C93D24391CFB3ED600FA034A /* ImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93D24371CFB3ED600FA034A /* ImagesCell.swift */; };
 		C93D243A1CFB3ED600FA034A /* ImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C93D24381CFB3ED600FA034A /* ImagesCell.xib */; };
 		C93D243C1CFB3F4800FA034A /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93D243B1CFB3F4800FA034A /* ReusableProtocol.swift */; };
+		C93D243E1CFF3AE400FA034A /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93D243D1CFF3AE400FA034A /* TestViewController.swift */; };
+		C93D24401CFF3B2800FA034A /* StoryboardIdentityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93D243F1CFF3B2800FA034A /* StoryboardIdentityProtocol.swift */; };
+		C93D24451CFFED8300FA034A /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93D24441CFFED8300FA034A /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		C93D24371CFB3ED600FA034A /* ImagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesCell.swift; sourceTree = "<group>"; };
 		C93D24381CFB3ED600FA034A /* ImagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagesCell.xib; sourceTree = "<group>"; };
 		C93D243B1CFB3F4800FA034A /* ReusableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
+		C93D243D1CFF3AE400FA034A /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		C93D243F1CFF3B2800FA034A /* StoryboardIdentityProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardIdentityProtocol.swift; sourceTree = "<group>"; };
+		C93D24441CFFED8300FA034A /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +68,11 @@
 			children = (
 				C93D24241CF97E8800FA034A /* AppDelegate.swift */,
 				C93D24261CF97E8800FA034A /* ViewController.swift */,
+				C93D24441CFFED8300FA034A /* ViewModel.swift */,
 				C93D24281CF97E8800FA034A /* Main.storyboard */,
+				C93D243D1CFF3AE400FA034A /* TestViewController.swift */,
 				C93D243B1CFB3F4800FA034A /* ReusableProtocol.swift */,
+				C93D243F1CFF3B2800FA034A /* StoryboardIdentityProtocol.swift */,
 				C93D24371CFB3ED600FA034A /* ImagesCell.swift */,
 				C93D24381CFB3ED600FA034A /* ImagesCell.xib */,
 				C93D24361CFB2EE500FA034A /* Resources */,
@@ -153,10 +162,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C93D243E1CFF3AE400FA034A /* TestViewController.swift in Sources */,
 				C93D24391CFB3ED600FA034A /* ImagesCell.swift in Sources */,
+				C93D24401CFF3B2800FA034A /* StoryboardIdentityProtocol.swift in Sources */,
 				C93D24271CF97E8800FA034A /* ViewController.swift in Sources */,
 				C93D243C1CFB3F4800FA034A /* ReusableProtocol.swift in Sources */,
 				C93D24251CF97E8800FA034A /* AppDelegate.swift in Sources */,
+				C93D24451CFFED8300FA034A /* ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
